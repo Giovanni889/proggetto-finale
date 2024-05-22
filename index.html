@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>LE MIGLIORI DOMANDE</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      background-color: rgb(61, 88, 209);
+    }
+
+    .btn{
+      background-color: rgb(61, 88, 209);
+      border-color: rgb(61, 88, 209);
+    }
+
+    .btn:hover{
+      background-color: rgb(11, 177, 206);
+    }
+
+    .jumbotron {
+      background-color: rgb(245, 235, 236);
+    }
+
+    .display-4{
+      font-weight: 800;
+      font-family: 'Times New Roman', Times, serif;
+      color: brown;
+    }
+   .lead{
+    font-weight: 700;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+   }
+   .esamee{
+    position: absolute;
+    top: 50%;
+    left: 10%;
+    width: 35%;
+   }
+   .colloquio-andato-male{
+    position:absolute;
+    top: 50%;
+    right: 10%;
+    width: 35%;
+   }
+   
+  </style>
+</head>
+<body onload="getRandomQuestion()"> <!-- Call the function on page load -->
+  <div class="jumbotron text-center">
+    <h1 class="display-4">LE MIGLIORI DOMANDE</h1>
+    <p class="lead">Ecco alcune domande orali comuni che vengono poste spesso</p>
+    <hr class="my-4">
+    <h3 id="question"></h3>
+    <p id="answer"></p>
+    <button class="btn btn-primary" onclick="getRandomQuestion()">Fai un'altra domanda</button>
+    <a href="addquestion" class="btn btn-success">Aggiungi domande</a>
+    <a href="listquestions" class="btn btn-info">Lista domande</a>
+  <img src="images/esamee.jpg" alt=""class="esamee">
+  <img src="images/colloquio-andato-male.webp" alt="" class="colloquio-andato-male">
+  </div>
+  <script>
+  function getRandomQuestion() {
+      fetch('/random')
+        .then(response => response.json())
+        .then(data => {
+          const randomQuestion = document.getElementById('question');
+          const randomAnswer = document.getElementById('answer');
+          randomQuestion.style.fontFamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
+          randomQuestion.textContent = data[0].question;
+          randomAnswer.textContent = data[0].answer;
+        })
+        .catch(error => console.log(error));
+    }
+  </script>
+
+  <footer>
+    <Center>
+    <p><font color="white">&copy; ITET Leonardo da Vinci (5BINF 23/24)</font></p>
+    </Center>
+  </footer>
+</body>
+</html>

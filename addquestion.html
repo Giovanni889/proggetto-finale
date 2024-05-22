@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Aggiugi domande</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+  <div class="container">
+    <h1>Aggiungi domande</h1>
+    <form id="add-question-form" action="/questions" method="POST">
+      <div class="form-group">
+        <label for="question">Domanda</label>
+        <input type="text" class="form-control" id="question" name="question" required>
+      </div>
+      <div class="form-group">
+        <label for="answer">Risposta</label>
+        <textarea class="form-control" id="answer" name="answer" rows="3" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="rating">Punteggio</label>
+        <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
+      </div>
+      <button type="submit" class="btn btn-primary">Aggiungi un'altra domanda</button>
+    </form>
+  </div>
+
+  <br>
+  <br>
+  <div class="container">
+  <center><a href="/" class="btn btn-primary">Home</a></center>
+  </div>
+  
+
+  <script src="./addquestion.js"></script>
+
+    <br>
+    <br>
+  <footer>
+    <Center>
+    <p>&copy; ITET Leonardo da Vinci (5BINF 23/24)</p>
+    </Center>
+  </footer>
+
+</body>
+</html>
