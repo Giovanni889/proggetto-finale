@@ -1,11 +1,11 @@
-async function addQuestion(question, answer, rating) {
+async function addQuestion(question, answer, topic) {
     try {
       const response = await fetch('/questions', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({ question, answer, rating }),
+        body: JSON.stringify({ question, answer, topic }),
       });
   
       if (response.ok) {
@@ -15,7 +15,7 @@ async function addQuestion(question, answer, rating) {
       }
       const questionElement = document.getElementById('question').value = "";
       const answerElement = document.getElementById('answer').value = "";
-      const ratingElement = document.getElementById('rating').value = "";
+      const ratingElement = document.getElementById('topic').value = "";
     } catch (error) {
       console.log(error);
     }
@@ -26,11 +26,11 @@ async function addQuestion(question, answer, rating) {
   
     const questionElement = document.getElementById('question');
     const answerElement = document.getElementById('answer');
-    const ratingElement = document.getElementById('rating');
+    const topicElement = document.getElementById('topic');
   
     const question = questionElement.value;
     const answer = answerElement.value;
-    const rating = ratingElement.value;
+    const topic = topicElement.value;
   
-    await addQuestion(question, answer, rating);
+    await addQuestion(question, answer, topic);
   });

@@ -27,8 +27,8 @@ app.get('/listquestions', (req, res, next) => {
 
 app.post('/questions', (req, res) => {
     let question = req.body;
-    let sql = 'INSERT INTO questions (question, answer, rating) VALUES (?, ?, ?)';
-    let values = [question.question, question.answer, question.rating];
+    let sql = 'INSERT INTO questions (question, answer, topic) VALUES (?, ?, ?)';
+    let values = [question.question, question.answer, question.topic];
     db.run(sql, values, (err, result) => {
       if (err) throw err;
       res.send('Question has been added...');
@@ -36,7 +36,7 @@ app.post('/questions', (req, res) => {
   });
 
   app.get('/questions', (req, res) => {
-    let sql = 'SELECT id, question, answer, rating FROM questions';
+    let sql = 'SELECT id, question, answer, topic FROM questions';
     db.all(sql, (err, results) => {
       if (err) throw err;
       res.send(results);
@@ -53,7 +53,7 @@ app.post('/questions', (req, res) => {
   
   app.put('/questions/:id', (req, res) => {
     let question = req.body;
-    let sql = `UPDATE questions SET question='${question.question}', answer='${question.answer}', rating=${question.rating} WHERE id=${req.params.id}`;
+    let sql = `UPDATE questions SET question='${question.question}', answer='${question.answer}', topic='${question.topic}' WHERE id=${req.params.id}`;
     db.run(sql, (err, result) => {
       if (err) throw err;
       res.send('Question updated...');
