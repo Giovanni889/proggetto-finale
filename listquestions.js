@@ -4,13 +4,13 @@ window.addEventListener("DOMContentLoaded", e => {
     let targetButton = e.target;
     const newQuestion = document.getElementById('question').value;
     const newAnswer = document.getElementById('answer').value;
-    const newRating = document.getElementById('rating').value;
+    const newTopic = document.getElementById('topic').value;
     const idQuestion = document.getElementById('idquestion').value;
     
     const question = {
       question: newQuestion,
       answer: newAnswer,
-      rating: newRating
+      topic: newTopic
     };
 
     fetch(`/questions/${idQuestion}`, {
@@ -42,7 +42,7 @@ function displayQuestions() {
           listItem.innerHTML = `
             <strong>Domanda:</strong><div id="question-${question.id}">${question.question}</div><br>
             <strong>Risposta:</strong><div id="answer-${question.id}">${question.answer}</div><br>
-            <strong>Punteggio:</strong><div id="rating-${question.id}">${question.rating}</div><br>
+            <strong>Materia:</strong><div id="topic-${question.id}">${question.topic}</div><br>
             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal" onclick="editQuestion(${question.id})">Modifica</button>
             <button class="btn btn-sm btn-danger" onclick="deleteQuestion(${question.id})">Elimina</button>
           `;
@@ -55,11 +55,11 @@ function displayQuestions() {
   function editQuestion(id) {
     const questionElement = document.getElementById(`question-${id}`).innerText;
     const answerElement = document.getElementById(`answer-${id}`).innerText;
-    const ratingElement = document.getElementById(`rating-${id}`).innerText;
+    const topicElement = document.getElementById(`topic-${id}`).innerText;
 
     document.getElementById('question').value = questionElement;
     document.getElementById('answer').value = answerElement;
-    document.getElementById('rating').value = ratingElement;
+    document.getElementById('topic').value = topicElement;
     document.getElementById('idquestion').value = id;
 
   }
