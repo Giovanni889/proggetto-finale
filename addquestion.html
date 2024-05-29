@@ -1,55 +1,139 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Aggiugi domande</title>
+  <title>Aggiungi argomento</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #f4f4f9;
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/old_map.png');
+    }
+
+    .container {
+      background-color: #fff8dc;
+      border: 2px solid #d4af37;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      margin-top: 50px;
+    }
+
+    h1 {
+      font-family: 'Dancing Script', cursive;
+      color: #8b4513;
+      font-size: 3rem;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .form-group label {
+      font-weight: bold;
+      color: #8b4513;
+    }
+
+    .form-control {
+      border-radius: 10px;
+    }
+
+    .input-group-text {
+      background-color: #d4af37;
+      color: white;
+      border-radius: 10px 0 0 10px;
+    }
+
+    .custom-select {
+      border-radius: 0 10px 10px 0;
+    }
+
+    .btn-primary {
+      background-color: #d4af37;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s ease-in-out;
+      border-radius: 50px;
+      padding: 10px 20px;
+      display: block;
+      margin: 20px auto;
+    }
+
+    .btn-primary:hover {
+      background-color: #8b4513;
+      color: #fff;
+    }
+
+    footer p {
+      color: #8b4513;
+      margin-top: 50px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .btn-blocknotes {
+      display: block;
+      margin: 20px auto;
+      background-color: #8b4513;
+      color: #fff;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s ease-in-out;
+      border-radius: 50px;
+      padding: 10px 20px;
+    }
+
+    .btn-blocknotes:hover {
+      background-color: #d4af37;
+      color: #fff;
+    }
+  </style>
 </head>
 <body>
   <div class="container">
-    <h1>Aggiungi domande</h1>
+    <h1>Aggiungi argomento</h1>
     <form id="add-question-form" action="/questions" method="POST">
       <div class="form-group">
-        <label for="question">Domanda</label>
+        <label for="question">Titolo argomento</label>
         <input type="text" class="form-control" id="question" name="question" required>
       </div>
       <div class="form-group">
-        <label for="answer">Risposta</label>
+        <label for="answer">Descrizione argomento</label>
         <textarea class="form-control" id="answer" name="answer" rows="3" required></textarea>
       </div>
       <div class="form-group">
         <label for="topic">Materia</label>
         <div class="input-group mb-3">
           <div class="input-group-prepend">
-            <label class="input-group-text" for="inputGroupSelect01">Seleziona la materia</label>
+            <label class="input-group-text" for="topic">Seleziona la materia</label>
           </div>
-          <select class="custom-select" id="topic">
-            <option selected>Choose...</option>
+          <select class="custom-select" id="topic" name="topic">
+            <option selected>Scegli...</option>
             <option value="Italiano">Italiano</option>
             <option value="Storia">Storia</option>
             <option value="Matematica">Matematica</option>
+            <option value="Inglese">Inglese</option>
+            <option value="Educazione civica">Educazione civica</option>
+            <option value="Gpo">Gpo</option>
+            <option value="Sistemi e reti">Sistemi e reti</option>
+            <option value="Informatica">Informatica</option>
+            <option value="Tpsi">Tpsi</option>
           </select>
         </div>
       </div>
-      <button type="submit" class="btn btn-primary">Aggiungi un'altra domanda</button>
+      <button type="submit" class="btn btn-primary">Aggiungi un'altra argomentazione</button>
     </form>
   </div>
 
-  <br>
-  <br>
   <div class="container">
-  <center><a href="/" class="btn btn-primary">Home</a></center>
+    <center><a href="/" class="btn btn-blocknotes">Torna al tuo block notes</a></center>
   </div>
-  
 
   <script src="./addquestion.js"></script>
 
-    <br>
-    <br>
   <footer>
-    <Center>
-    <p>&copy; ITET Leonardo da Vinci (5BINF 23/24)</p>
-    </Center>
+    <center>
+      <p>&copy; ITET Leonardo da Vinci (5BINF 23/24)</p>
+    </center>
   </footer>
-
 </body>
 </html>

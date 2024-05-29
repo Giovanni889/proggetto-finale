@@ -40,8 +40,8 @@ function displayQuestions() {
           const listItem = document.createElement('li');
           listItem.className = 'list-group-item';
           listItem.innerHTML = `
-            <strong>Domanda:</strong><div id="question-${question.id}">${question.question}</div><br>
-            <strong>Risposta:</strong><div id="answer-${question.id}">${question.answer}</div><br>
+            <strong>Titolo argomento:</strong><div id="question-${question.id}">${question.question}</div><br>
+            <strong>Descrizone:</strong><div id="answer-${question.id}">${question.answer}</div><br>
             <strong>Materia:</strong><div id="topic-${question.id}">${question.topic}</div><br>
             <button class="btn btn-sm btn-primary" data-toggle="modal" data-target="#editModal" onclick="editQuestion(${question.id})">Modifica</button>
             <button class="btn btn-sm btn-danger" onclick="deleteQuestion(${question.id})">Elimina</button>

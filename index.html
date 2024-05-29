@@ -1,71 +1,134 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>LE MIGLIORI DOMANDE</title>
+  <title>BLOCK NOTES</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Roboto:wght@400;700&display=swap" rel="stylesheet">
   <style>
     body {
-      background-color: rgb(61, 88, 209);
-    }
-
-    .btn{
-      background-color: rgb(61, 88, 209);
-      border-color: rgb(61, 88, 209);
-    }
-
-    .btn:hover{
-      background-color: rgb(11, 177, 206);
+      background-color: #f4f4f9;
+      font-family: 'Roboto', sans-serif;
+      padding: 20px;
+      background-image: url('https://www.toptal.com/designers/subtlepatterns/patterns/old_map.png');
     }
 
     .jumbotron {
-      background-color: rgb(245, 235, 236);
+      background-color: #fff8dc;
+      border: 2px solid #d4af37;
+      border-radius: 15px;
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+      padding: 30px;
+      margin-top: 50px;
+      position: relative;
+      overflow: hidden;
     }
 
-    .display-4{
-      font-weight: 800;
-      font-family: 'Times New Roman', Times, serif;
-      color: brown;
+    .jumbotron:before, .jumbotron:after {
+      content: '';
+      position: absolute;
+      top: -12px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 90%;
+      height: 24px;
+      background: repeating-linear-gradient(90deg, #d4af37, #d4af37 1px, transparent 1px, transparent 4px);
     }
-   .lead{
-    font-weight: 700;
-    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
-   }
-   .esamee{
-    position: absolute;
-    top: 50%;
-    left: 10%;
-    width: 35%;
-   }
-   .colloquio-andato-male{
-    position:absolute;
-    top: 50%;
-    right: 10%;
-    width: 35%;
-   }
-   
+
+    .jumbotron:before {
+      top: -20px;
+      height: 8px;
+    }
+
+    .jumbotron h1.display-4 {
+      color: #8b4513;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+    }
+
+    .lead {
+      color: #6b8e23;
+      font-weight: bold;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .btn {
+      background-color: #d4af37;
+      border: none;
+      font-weight: bold;
+      transition: background 0.3s ease-in-out;
+      border-radius: 50px;
+      padding: 10px 20px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .btn-primary:hover, .btn-success:hover, .btn-info:hover {
+      background-color: #8b4513;
+      color: #fff;
+    }
+
+    footer p {
+      color: #8b4513;
+      margin-top: 50px;
+      font-family: 'Roboto', sans-serif;
+    }
+
+    .decorative-corner {
+      position: absolute;
+      width: 50px;
+      height: 50px;
+      background-color: #d4af37;
+    }
+
+    .decorative-corner.top-left {
+      top: 0;
+      left: 0;
+      border-top-left-radius: 15px;
+    }
+
+    .decorative-corner.top-right {
+      top: 0;
+      right: 0;
+      border-top-right-radius: 15px;
+    }
+
+    .decorative-corner.bottom-left {
+      bottom: 0;
+      left: 0;
+      border-bottom-left-radius: 15px;
+    }
+
+    .decorative-corner.bottom-right {
+      bottom: 0;
+      right: 0;
+      border-bottom-right-radius: 15px;
+    }
   </style>
 </head>
-<body onload="getRandomQuestion()"> <!-- Call the function on page load -->
-  <div class="jumbotron text-center">
-    <h1 class="display-4">LE MIGLIORI DOMANDE</h1>
-    <p class="lead">Ecco alcune domande orali comuni che vengono poste spesso</p>
-    <hr class="my-4">
-    <h3 id="question"></h3>
-    <p id="answer"></p>
-    <button class="btn btn-primary" onclick="getRandomQuestion()">Fai un'altra domanda</button>
-    <a href="addquestion" class="btn btn-success">Aggiungi domande</a>
-    <a href="listquestions" class="btn btn-info">Lista domande</a>
-  <img src="images/esamee.jpg" alt=""class="esamee">
-  <img src="images/colloquio-andato-male.webp" alt="" class="colloquio-andato-male">
+<body onload="getRandomQuestion()">
+  <div class="container">
+    <div class="jumbotron text-center">
+      <div class="decorative-corner top-left"></div>
+      <div class="decorative-corner top-right"></div>
+      <div class="decorative-corner bottom-left"></div>
+      <div class="decorative-corner bottom-right"></div>
+      <h1 class="display-4">BLOCK NOTES</h1>
+      <p class="lead">I miei appunti</p>
+      <hr class="my-4">
+      <h3 id="question"></h3>
+      <p id="answer"></p>
+      <button class="btn btn-primary" onclick="getRandomQuestion()">Scorri</button>
+      <a href="addquestion" class="btn btn-success">Aggiungi argomenti</a>
+      <a href="listquestions" class="btn btn-info">Lista argomenti</a>
+    </div>
   </div>
+
   <script>
-  function getRandomQuestion() {
+    function getRandomQuestion() {
       fetch('/random')
         .then(response => response.json())
         .then(data => {
           const randomQuestion = document.getElementById('question');
           const randomAnswer = document.getElementById('answer');
-          randomQuestion.style.fontFamily = "Cambria, Cochin, Georgia, Times, 'Times New Roman', serif"
           randomQuestion.textContent = data[0].question;
           randomAnswer.textContent = data[0].answer;
         })
@@ -74,9 +137,10 @@
   </script>
 
   <footer>
-    <Center>
-    <p><font color="white">&copy; ITET Leonardo da Vinci (5BINF 23/24)</font></p>
-    </Center>
+    <center>
+      <p>&copy; ITET Leonardo da Vinci (5BINF 23/24)</p>
+    </center>
   </footer>
 </body>
 </html>
+
